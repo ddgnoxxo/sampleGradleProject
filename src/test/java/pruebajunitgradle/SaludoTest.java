@@ -25,7 +25,7 @@ public class SaludoTest {
     }
 
     @Test
-    @Tag("intregration")
+    @Tag("integration")
     void helloWorld2() {
         saludo = new Saludo();
         System.out.println("\n\n\nTEST DE INTEGRATION");
