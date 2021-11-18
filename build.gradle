@@ -12,5 +12,20 @@ repositories {
 }
 
 dependencies {
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.1'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.8.1'
+    testImplementation group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.8.1'
 
+}
+
+test{
+    String tags = System.getProperty("includeTags") ? System.getProperty("includeTags") : 'regression';
+    systemProperty 'env', System.properties['env'] ?: 'staging'
+    useJUnitPlatform{
+        includeTags  tags
+    }
+    testLogging.showStandardStreams = true
+    testLogging{
+        events "passed","skipped","failed"
+    }
 }
